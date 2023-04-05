@@ -1,25 +1,56 @@
 import os
 import random
-
+import pymongo
+from io import BytesIO
 import tkinter as tk
 from PIL import Image, ImageTk
 from playsound import playsound
+#from pymongo import MongoClient
+#import gridFS
 
-# change any of these constants to style and make it your own!
+
+#D9UiaCqouXF1uFSy
+client = pymongo.MongoClient("mongodb+srv://vedantbhagat99:D9UiaCqouXF1uFSy@cluster0.qtleoda.mongodb.net/?retryWrites=true&w=majority")
+db = client["wardrobe"]
+top1 = db["Top"]
+bottom1 = db["Bottom"]
+
+#GUI
 WINDOW_TITLE = 'Virtual Wardrobe'
 WINDOW_WIDTH = 220
 WINDOW_HEIGHT = 500
-IMG_HEIGHT = 360
+IMG_HEIGHT = 310
 IMG_WIDTH = 250
 BEIGE_COLOR_HEX = '#603cba'
 SOUND_EFFECT_FILE_PATH = 'assets/yes-2.wav'
 
 # dynamically open folders and make a list, while ignoring any hidden files that start with "."
-# just add any image file into these folders and they will magically appear in your wardrobe!
+
 
 ALL_TOPS = [str("tops/") + file for file in os.listdir("tops/") if not file.startswith('.')]
 ALL_BOTTOMS = [str("bottoms/") + file for file in os.listdir("bottoms/") if not file.startswith('.')]
 
+# documents = top1.find()
+
+# ALL_TOPS = []
+
+# for document in documents:
+#     image_data = document["imagedata"]
+
+#     image = Image.open(BytesIO(image_data))
+#     ALL_TOPS.append(image)
+
+# documents = bottom1.find()
+
+# ALL_BOTTOMS = []
+
+# for document in documents:
+#     image_data = document["imagedata"]
+
+#     image = Image.open(BytesIO(image_data))
+#     ALL_BOTTOMS.append(image)
+   
+    
 
 class WardrobeApp:
 
